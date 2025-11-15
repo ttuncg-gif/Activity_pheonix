@@ -1,0 +1,7 @@
+asset_name,ip_address,vulnerability_name,cvss_score,impact,likelihood,risk_score,description
+Metasploitable 2 Vulnerable Host,192.168.56.101,VSFTPD 2.3.4 Backdoor,9.8,5,5,25,VSFTPD 2.3.4 contains a malicious backdoor that grants remote root access.
+Metasploitable 2 Vulnerable Host,192.168.56.101,OpenSSH Remote Code Execution,9.3,5,5,25,OpenSSH version installed is vulnerable to remote code execution allowing attackers to execute arbitrary commands.
+Metasploitable 2 Vulnerable Host,192.168.56.101,Apache Directory Traversal,7.5,5,5,25,Apache server allows directory traversal enabling disclosure of system files.
+Metasploitable 2 Vulnerable Host,192.168.56.101,Unencrypted FTP Login,5.0,5,3,15,FTP is transmitting credentials in plaintext which can be intercepted by network attackers.
+Company File Server,192.168.56.12,Weak SMB Credentials,6.0,5,3,15,SMB shares use weak passwords allowing brute-force access to sensitive shares.
+Company File Server,192.168.56.12,SMB Signing Not Required,4.3,5,3,15,SMB signing is not required, allowing man-in-the-middle attacks on SMB sessions.

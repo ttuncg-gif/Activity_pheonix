@@ -1,0 +1,62 @@
+PROJECT PHOENIX — FINAL BRIEFING REPORT
+Submitted by Team-404notfound
+Members: Shaik Toufiq, Sai Sindhu Javvaji, Sai Bindu Javvaji, Sadia, Hunter
+
+1. Executive Summary
+This project built an Automated Risk Register which ingests raw vulnerability output from Greenbone Vulnerability Manager (GVM) and transforms it into a prioritized list of business risks. We created a realistic enterprise asset inventory, executed vulnerability scanning in an isolated virtual lab (Kali Purple and Metasploitable 2), and implemented a Python engine to parse XML findings, map them to assets, compute risk scores using a defensible CVSS-to-likelihood conversion, and produce a final risk register sorted by priority.
+
+2. Team Process & Workflow
+Our team used a SOC-like workflow:
+- Environment: VirtualBox host-only network containing Kali Purple (scanner) and Metasploitable 2 (target).
+- Roles:
+  - Shaik Toufiq — Python developer and risk scoring architecture.
+  - Sai Sindhu Javvaji — GVM operator and scanner task configuration.
+  - Sai Bindu Javvaji — documentation and final report generation.
+  - Sadia — asset inventory and data validation.
+  - Hunter — GitHub manager and QA.
+- Version control: All code and artifacts were maintained in a private GitHub repository with feature branches and a final tag `v1.0-final`.
+
+3. CVSS → Likelihood Mapping (and justification)
+We used the following mapping:
+- CVSS 7.0–10.0 -> Likelihood 5 (High exploitation probability + severe impact)
+- CVSS 4.0–6.9 -> Likelihood 3 (Moderate exploitation probability)
+- CVSS 0.1–3.9 -> Likelihood 1 (Low exploitation probability or minor misconfiguration)
+
+Justification: CVSS provides severity; however, organizations require a simplified likelihood scale for prioritization. The mapping above balances severity with realistic exploitation likelihood and is easily defensible to stakeholders.
+
+4. LLM Prompt (optional bonus)
+We used an LLM prompt to generate business-friendly threat scenarios:
+"You are a cybersecurity analyst briefing an executive. Explain the real-world business risk of the following vulnerability in one simple sentence."
+
+5. Top 3 Risks (analysis)
+From the generated risk_register.csv, the top three risks were:
+1) VSFTPD 2.3.4 Backdoor — Risk Score 25
+   - Impact: Full root compromise. Business risk: immediate system takeover, data exfiltration and persistence.
+   - Recommended action: Isolate host, remove/upgrade VSFTPD, reimage if persistence is suspected.
+
+2) OpenSSH Remote Code Execution — Risk Score 25
+   - Impact: Remote arbitrary code execution via SSH. Business risk: lateral movement, credential theft.
+   - Recommended action: Patch or replace OpenSSH, rotate SSH keys, restrict access via firewall.
+
+3) Apache Directory Traversal — Risk Score 25
+   - Impact: Exploitable directory traversal allows reading system files and configurations.
+   - Recommended action: Patch Apache and fix application input validation; restrict file permissions.
+
+6. Reflection: Automated vs Manual Day Zero Analysis
+Our manual Day Zero exercise identified a handful of obvious issues. The automated pipeline:
+- Found significantly more vulnerabilities
+- Produced objective scores and a prioritized list
+- Reduced manual analysis time and human bias
+- Improved traceability: every result links to an IP and asset in assets.csv
+
+Automation complements human analysis — it surfaces scale and repeatability, while analysts interpret business impact and plan remediation.
+
+7. Deliverables
+- assets.csv (enterprise inventory)
+- gvm_report.xml (exported from GVM) or the provided realistic XML sample
+- main.py (parser + risk engine)
+- risk_register.csv (final prioritized list)
+- CONTRIBUTORS.md
+- Briefing report (this document)
+
+Prepared by Team-404notfound

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report id="report-0001" start="2025-11-14T00:00:00Z" stop="2025-11-14T00:00:00Z" xmlns="http://www.greenbone.net/schema/report/2.0">
+  <report_format id="format-xml-1">
+    <name>Greenbone Vulnerability Report (Sample)</name>
+    <type>XML</type>
+  </report_format>
+
+  <report_hosts>
+    <report_host>
+      <host>192.168.56.101</host>
+      <host_fqdn>metasploitable.local</host_fqdn>
+      <results>
+        <result>
+          <name>VSFTPD 2.3.4 Backdoor</name>
+          <nvt id="nvt-vsftpd-234" oid="1.3.6.1.4.1.x">
+            <cve>CVE-2011-4133</cve>
+            <cvss_base>9.8</cvss_base>
+            <cvss_vector>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</cvss_vector>
+          </nvt>
+          <severity>10</severity>
+          <host>192.168.56.101</host>
+          <port>21</port>
+          <description>VSFTPD 2.3.4 contains a malicious backdoor that grants remote root access.</description>
+          <solution>Remove the vulnerable package and replace with a patched version. Reimage host if compromise suspected.</solution>
+        </result>
+
+        <result>
+          <name>OpenSSH Remote Code Execution</name>
+          <nvt id="nvt-openssh-rc" oid="1.3.6.1.4.1.x">
+            <cve>CVE-2008-5161</cve>
+            <cvss_base>9.3</cvss_base>
+            <cvss_vector>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</cvss_vector>
+          </nvt>
+          <severity>9</severity>
+          <host>192.168.56.101</host>
+          <port>22</port>
+          <description>OpenSSH version installed is vulnerable to remote code execution allowing attackers to execute arbitrary commands.</description>
+          <solution>Upgrade OpenSSH to a non-vulnerable release, rotate keys, and restrict access via firewall rules.</solution>
+        </result>
+
+        <result>
+          <name>Unencrypted FTP Login</name>
+          <nvt id="nvt-ftp-plain" oid="1.3.6.1.4.1.x">
+            <cvss_base>5.0</cvss_base>
+          </nvt>
+          <severity>5</severity>
+          <host>192.168.56.101</host>
+          <port>21</port>
+          <description>FTP is transmitting credentials in plaintext which can be intercepted by network attackers.</description>
+          <solution>Migrate to SFTP/FTPS and disable legacy FTP service.</solution>
+        </result>
+
+        <result>
+          <name>Apache Directory Traversal</name>
+          <nvt id="nvt-apache-dirtrav" oid="1.3.6.1.4.1.x">
+            <cvss_base>7.5</cvss_base>
+          </nvt>
+          <severity>7</severity>
+          <host>192.168.56.101</host>
+          <port>80</port>
+          <description>Apache server allows directory traversal enabling disclosure of system files.</description>
+          <solution>Apply vendor patches and validate web application input handling; restrict file system permissions.</solution>
+        </result>
+
+      </results>
+    </report_host>
+
+    <report_host>
+      <host>192.168.56.12</host>
+      <host_fqdn>fileserver.internal</host_fqdn>
+      <results>
+        <result>
+          <name>SMB Signing Not Required</name>
+          <nvt id="nvt-smb-sign" oid="1.3.6.1.4.1.x">
+            <cvss_base>4.3</cvss_base>
+          </nvt>
+          <severity>4</severity>
+          <host>192.168.56.12</host>
+          <port>445</port>
+          <description>SMB signing is not required, allowing man-in-the-middle attacks on SMB sessions.</description>
+          <solution>Enable SMB signing and apply security policies on file server.</solution>
+        </result>
+        <result>
+          <name>Weak SMB Credentials</name>
+          <nvt id="nvt-smb-weak" oid="1.3.6.1.4.1.x">
+            <cvss_base>6.0</cvss_base>
+          </nvt>
+          <severity>6</severity>
+          <host>192.168.56.12</host>
+          <port>445</port>
+          <description>SMB shares use weak passwords allowing brute-force access to sensitive shares.</description>
+          <solution>Enforce strong passwords and implement account lockout policies.</solution>
+        </result>
+      </results>
+    </report_host>
+
+  </report_hosts>
+</report>

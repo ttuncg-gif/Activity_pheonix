@@ -1,0 +1,11 @@
+ip_address,asset_name,asset_owner,asset_criticality
+192.168.56.101,Metasploitable 2 Vulnerable Host,Sadia,5
+192.168.56.10,Kali Purple Scanner,Toufiq,5
+192.168.56.11,Internal Web Application (Dev),Sai Sindhu Javvaji,4
+192.168.56.12,Company File Server,Hunter,5
+192.168.56.13,Database Server (MySQL),Sadia,5
+192.168.56.14,Legacy Ubuntu API Server,Sai Bindu Javvaji,4
+192.168.56.15,Windows 10 Workstation 01,Hunter,3
+192.168.56.16,Backup Storage Appliance,Sadia,3
+192.168.56.17,Testing Environment VM,Toufiq,2
+192.168.56.18,Internal Authentication Server,Sai Sindhu Javvaji,5
