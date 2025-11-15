@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report id="report-0001" start="2025-11-14T00:00:00Z" stop="2025-11-14T00:00:00Z" xmlns="http://www.greenbone.net/schema/report/2.0">
   <report_format id="format-xml-1">
-    <name>Greenbone Vulnerability Report (Sample)</name>
+    <name>Greenbone Vulnerability Report</name>
     <type>XML</type>
   </report_format>
 
